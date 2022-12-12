@@ -9,12 +9,13 @@ namespace AdventOfCode2022
 {
     internal class DayFourChallenge : IDayChallenge
     {
-        public string InputPath => @"DayFour\input.txt";
+        private readonly string[] inputPath = { "DayFour", "input.txt" };
+        public string[] InputPath => inputPath;
         public List<((int min, int max) rangeOne, (int min, int max) rangeTwo)> Pairs;
 
         public DayFourChallenge()
         {
-            Pairs = File.ReadAllLines(InputPath).Select(line =>
+            Pairs = File.ReadAllLines(Path.Combine(InputPath)).Select(line =>
             {
                 var split = line.Split(',');
                 var rangeSplit1 = split[0].Split('-');

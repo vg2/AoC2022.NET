@@ -10,14 +10,15 @@ namespace AdventOfCode2022
 {
     internal class DayNineChallenge : IDayChallenge
     {
-        public string InputPath => @"DayNine\input.txt";
+        private readonly string[] inputPath = { "DayNine", "input.txt" };
+        public string[] InputPath => inputPath;
         private (char direction, int amount)[] input;
         List<(int x, int y)> tailTraveledPositions;
         List<(int x, int y, bool isTail)> tailTraveledPositions2;
 
         public DayNineChallenge()
         {
-            input = File.ReadAllLines(InputPath).Select(line =>
+            input = File.ReadAllLines(Path.Combine(InputPath)).Select(line =>
             {
                 var splitLine = line.Split(' ');
                 return (splitLine[0][0], int.Parse(splitLine[1]));

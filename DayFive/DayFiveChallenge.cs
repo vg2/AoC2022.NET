@@ -9,13 +9,14 @@ namespace AdventOfCode2022
 {
     internal class DayFiveChallenge : IDayChallenge
     {
-        public string InputPath => @"DayFive\input.txt";
+        private readonly string[] inputPath = { "DayFive", "input.txt" };
+        public string[] InputPath => inputPath;
         private Stack<char>[] stacks;
         private List<(int amount, int from, int to)> moveInstructions;
 
         public DayFiveChallenge()
         {
-            var lines = File.ReadAllLines(InputPath);
+            var lines = File.ReadAllLines(Path.Combine(InputPath));
 
             var stackCountLine = lines.First(l => l.Trim().StartsWith('1'));
             var stackCount = int.Parse(stackCountLine.Trim().Last().ToString());

@@ -9,14 +9,15 @@ namespace AdventOfCode2022
 {
     internal class DayThreeChallenge : IDayChallenge
     {
-        public string InputPath => @"DayThree\input.txt";
+        private readonly string[] inputPath = { "DayThree", "input.txt" };
+        public string[] InputPath => inputPath;
         private List<(string compartmentOne, string compartmentTwo)> input;
         private List<string[]> inputTwo;
         
 
         public DayThreeChallenge()
         {
-            input = File.ReadAllLines(InputPath).Select(line =>
+            input = File.ReadAllLines(Path.Combine(InputPath)).Select(line =>
             {
                 // shmhggDsZCZWBDmsQTcTqrLPTbNbwQQrrN
                 var length = line.Length;
@@ -25,7 +26,7 @@ namespace AdventOfCode2022
                 return (cOne, cTwo);
             }).ToList();
 
-            inputTwo = File.ReadAllLines(InputPath).Chunk(3).ToList();
+            inputTwo = File.ReadAllLines(Path.Combine(InputPath)).Chunk(3).ToList();
         }
 
         private int GetValueForLetter(char letter)

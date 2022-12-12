@@ -10,19 +10,48 @@ namespace AdventOfCode2022
 {
     internal class DayTenChallenge : IDayChallenge
     {
-        public string InputPath => @"DayTen\input.txt";
-        private string input;
+        private readonly string[] inputPath = { "DayTen", "input.txt" };
+        public string[] InputPath => inputPath;
+        private string[] input;
 
         public DayTenChallenge()
         {
-            input = File.ReadAllText(InputPath);
+            input = File.ReadAllLines(Path.Combine(InputPath));
         }
 
         public object ExecutePartOne()
         {
-            return -1;
+            var cycle = 0;
+            var trackedCycleValues = new List<int>();
+            var x = 1;
+            foreach(var line in input)
+            {
+                var splitLine = line.Split(' ');
+                
+                if (splitLine[0] == "noop")
+                {
+                    cycle++;
+                    CheckAndAddCycle(cycle, trackedCycleValues, x);
+                }
+                else {
+                    cycle++;
+                    CheckAndAddCycle(cycle, trackedCycleValues, x);
+                    cycle++;                    
+                    CheckAndAddCycle(cycle, trackedCycleValues, x);
+                    x += int.Parse(splitLine[1]);
+                }
+            }
+            Console.WriteLine(string.Join(",",trackedCycleValues));
+            return trackedCycleValues.Sum();
         }
 
+        private void CheckAndAddCycle(int cycle, List<int> trackedCycleValues, int currentRegisterValue)
+        {
+            if (cycle == 20 || ((cycle - 20) % 40 == 0))
+            {
+                trackedCycleValues.Add(currentRegisterValue * cycle);
+            }
+        }
 
         public object ExecutePartTwo()
         {

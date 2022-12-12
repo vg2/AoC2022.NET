@@ -8,7 +8,8 @@ namespace AdventOfCode2022
 {
     internal class DayTwoChallenge : IDayChallenge
     {
-        public string InputPath => @"DayTwo\input.txt";
+        private readonly string[] inputPath = { "DayTwo", "input.txt" };
+        public string[] InputPath => inputPath;
         private List<(Guess opponent, Guess me, Outcome outcome)> inputOne;
         private List<(Guess opponent, Guess me, Outcome outcome)> inputTwo;
 
@@ -50,7 +51,7 @@ namespace AdventOfCode2022
 
         public DayTwoChallenge()
         {
-            inputOne = File.ReadAllLines(InputPath).Select(line =>
+            inputOne = File.ReadAllLines(Path.Combine(InputPath)).Select(line =>
             {
                 var split = line.Split(' ');
                 var opponentGuess = OpponentGuessMap[split[0][0]];
@@ -58,7 +59,7 @@ namespace AdventOfCode2022
                 return (opponentGuess, myGuess, GetOutcome(opponentGuess, myGuess));
             }).ToList();
 
-            inputTwo = File.ReadAllLines(InputPath).Select(line =>
+            inputTwo = File.ReadAllLines(Path.Combine(InputPath)).Select(line =>
             {
                 var split = line.Split(' ');
                 var opponentGuess = OpponentGuessMap[split[0][0]];

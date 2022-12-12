@@ -10,12 +10,13 @@ namespace AdventOfCode2022
 {
     internal class DaySixChallenge : IDayChallenge
     {
-        public string InputPath => @"DaySix\input.txt";
+        private readonly string[] inputPath = { "DaySix", "input.txt" };
+        public string[] InputPath => inputPath;
         private string input;
 
         public DaySixChallenge()
         {
-            input = File.ReadAllText(InputPath);
+            input = File.ReadAllText(Path.Combine(InputPath));
         }
 
         public object ExecutePartOne()

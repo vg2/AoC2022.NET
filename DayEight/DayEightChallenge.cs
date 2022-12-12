@@ -10,12 +10,13 @@ namespace AdventOfCode2022
 {
     internal class DayEightChallenge : IDayChallenge
     {
-        public string InputPath => @"DayEight\input.txt";
+        private readonly string[] inputPath = { "DayEight", "input.txt" };
+        public string[] InputPath => inputPath;
         private int[][] input;
 
         public DayEightChallenge()
         {
-            input = File.ReadAllLines(InputPath).Select(line =>
+            input = File.ReadAllLines(Path.Combine(InputPath)).Select(line =>
             {
                 return line.Select(character => int.Parse(character.ToString())).ToArray();
             }).ToArray();

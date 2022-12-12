@@ -10,7 +10,8 @@ namespace AdventOfCode2022
     {
         private readonly List<int> caloriesPerElf = new List<int>();
 
-        public string InputPath => @"DayOne\input.txt";
+        private readonly string[] inputPath = { "DayOne", "input.txt" };
+        public string[] InputPath => inputPath;
 
         public DayOneChallenge()
         {
@@ -19,7 +20,7 @@ namespace AdventOfCode2022
 
         private void LoadCaloriesPerElf()
         {
-            var lines = File.ReadAllLines(InputPath);
+            var lines = File.ReadAllLines(Path.Combine(InputPath));
             var index = 0;
             caloriesPerElf.Add(0);
             foreach (var line in lines)
