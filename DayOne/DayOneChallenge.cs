@@ -36,12 +36,12 @@ namespace AdventOfCode2022
             }
         }
 
-        public int ExecutePartOne()
+        public object ExecutePartOne()
         {
             return caloriesPerElf.Max();
         }
 
-        public int ExecutePartTwo()
+        public object ExecutePartTwo()
         {
             return caloriesPerElf.OrderByDescending(i => i).Take(3).Sum();
         }

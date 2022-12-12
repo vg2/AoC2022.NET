@@ -1,12 +1,12 @@
 ﻿using AdventOfCode2022;
 
-IDayChallenge challenge = new DayFourChallenge();
+IDayChallenge challenge1 = new DayNineChallenge();
 
 Console.WriteLine("Part One:");
-Console.WriteLine(challenge.ExecutePartOne());
+Console.WriteLine(challenge1.ExecutePartOne());
 
-
+IDayChallenge challenge2 = new DayNineChallenge();
 Console.WriteLine("Part Two:");
-Console.WriteLine(challenge.ExecutePartTwo());
+Console.WriteLine(challenge2.ExecutePartTwo());
 
 Console.ReadLine();

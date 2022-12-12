@@ -9,8 +9,8 @@ namespace AdventOfCode2022
     internal interface IDayChallenge
     {
         string InputPath { get; }
-        int ExecutePartOne();
+        object ExecutePartOne();
 
-        int ExecutePartTwo();
+        object ExecutePartTwo();
     }
 }

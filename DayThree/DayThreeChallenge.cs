@@ -41,7 +41,7 @@ namespace AdventOfCode2022
             return value;
         }
      
-        public int ExecutePartOne()
+        public object ExecutePartOne()
         {
             var commonItems = new List<char>();
             foreach (var bag in input)
@@ -65,7 +65,7 @@ namespace AdventOfCode2022
             return commonItems.Select(i => GetValueForLetter(i)).Sum();
         }
 
-        public int ExecutePartTwo()
+        public object ExecutePartTwo()
         {
             var badgeChars = new List<char>();
             foreach (var chunk in inputTwo)

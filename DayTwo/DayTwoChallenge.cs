@@ -115,12 +115,12 @@ namespace AdventOfCode2022
         }
 
      
-        public int ExecutePartOne()
+        public object ExecutePartOne()
         {
             return inputOne.Select(i => (int)i.me + (int)i.outcome).Sum();
         }
 
-        public int ExecutePartTwo()
+        public object ExecutePartTwo()
         {
             return inputTwo.Select(i => (int)i.me + (int)i.outcome).Sum();
         }

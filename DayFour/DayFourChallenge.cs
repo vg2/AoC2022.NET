@@ -27,7 +27,7 @@ namespace AdventOfCode2022
             }).ToList();
         }
 
-        public int ExecutePartOne()
+        public object ExecutePartOne()
         {
             var count = 0;
             foreach (var pair in Pairs)
@@ -45,7 +45,7 @@ namespace AdventOfCode2022
             return count;
         }
 
-        public int ExecutePartTwo()
+        public object ExecutePartTwo()
         {
             var count = 0;
             foreach (var pair in Pairs)
