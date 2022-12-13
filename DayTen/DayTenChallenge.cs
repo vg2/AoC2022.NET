@@ -41,7 +41,6 @@ namespace AdventOfCode2022
                     x += int.Parse(splitLine[1]);
                 }
             }
-            Console.WriteLine(string.Join(",",trackedCycleValues));
             return trackedCycleValues.Sum();
         }
 
@@ -55,7 +54,61 @@ namespace AdventOfCode2022
 
         public object ExecutePartTwo()
         {
+            var cycle = 0;
+            var x = 1;
+            var crt = new List<string>() { string.Empty };
+            var currentLine = 0;
+
+            foreach (var line in input)
+            {
+                var splitLine = line.Split(' ');
+                if (cycle != 0 && cycle % 40 == 0)
+                {
+                    crt.Add(string.Empty);
+                    currentLine++;
+                }
+
+                if (splitLine[0] == "noop")
+                {
+                    RenderPixel(x, crt, currentLine);
+
+                    cycle++;
+                }
+                else
+                {
+                    RenderPixel(x, crt, currentLine);
+                    cycle++;
+
+                    if (cycle != 0 && cycle % 40 == 0)
+                    {
+                        crt.Add(string.Empty);
+                        currentLine++;
+                    }
+
+                    RenderPixel(x, crt, currentLine);
+                    cycle++;
+                    x += int.Parse(splitLine[1]);
+                }
+            }
+            foreach (var line in crt)
+            {
+                Console.WriteLine(line);
+                    };
             return -1;
         }
+
+        private static void RenderPixel(int x, List<string> crt, int currentLine)
+        {
+            var lineLength = crt[currentLine].Length;
+            if (lineLength == x || lineLength + 1 == x || lineLength - 1 == x)
+            {
+                crt[currentLine] += "#";
+            }
+            else
+            {
+                crt[currentLine] += ".";
+            }
+        }
+
     }
 }
